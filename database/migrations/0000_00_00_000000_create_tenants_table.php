@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique(); // ex: empresa-x
+            $table->string('cpf_cnpj');
+            $table->string('phone_whatsapp');
+            $table->string('email');
+            $table->string('slug')->unique();
+            $table->string('logo')->nullable();
             $table->timestamps();
         });
     }
