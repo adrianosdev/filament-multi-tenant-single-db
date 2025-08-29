@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Tenant extends Model
 {
@@ -14,4 +16,9 @@ class Tenant extends Model
         'slug',
         'logo'
     ];
+
+    public function activeSignature(): HasOne {
+        return $this->hasOne(Signature::class)->where('status', 'active')->orWhere('status', 'pending');
+    }
+
 }
