@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('signatures', function (Blueprint $table) {
             $table->id();
             $table->foreignId('tenant_id');
-            $table->foreignId('plan_id');
-            $table->string('gateway_subscription_id')->nullable(); // id da assinatura no gateway
-            $table->decimal('price', 10, 2); // valor contratado
-            $table->enum('recurrence', ['daily', 'monthly', 'yearly']);
-            $table->integer('recurrence_interval')->nullable()->default(1);
-            $table->enum('status', ['pending', 'active', 'canceled', 'expired'])->nullable()->default('pending');
-            $table->date('started_at')->nullable();
-            $table->date('end_at')->nullable();
-            $table->decimal('next_price')->nullable();
-            $table->date('price_change_at')->nullable();
+            $table->string('preapproval_plan_id')->nullable();
+            $table->string('reason')->nullable()->nullable();
+            $table->string('external_reference')->nullable();
+            $table->string('payer_email');
+            $table->string('card_token_id');
+            $table->json('auto_recurring');
+            $table->string('back_url');
+            $table->string('status');
             $table->timestamps();
         });
     }

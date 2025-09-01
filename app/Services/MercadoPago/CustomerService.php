@@ -3,9 +3,9 @@
 namespace App\Services\MercadoPago;
 use Illuminate\Support\Facades\Http;
 
-class PlanService
+class CustomerService
 {
-    public static function create(array $data)
+    public function create(array $data)
     {
         $accessToken = config('services.mercadopago.token');
         $baseUrl = config('services.mercadopago.base_url');
@@ -13,7 +13,7 @@ class PlanService
         $response = Http::withToken($accessToken)
             ->acceptJson()
             ->contentType('application/json')
-            ->post($baseUrl . '/preapproval_plan', $data);
+            ->post($baseUrl . '/v1/customers', ['email' => $data['email']]);
 
         return $response;
     }

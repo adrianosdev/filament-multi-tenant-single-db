@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('preapproval_plan_id');
             $table->string('reason');
             $table->string('status')->nullable();
             $table->string('back_url');

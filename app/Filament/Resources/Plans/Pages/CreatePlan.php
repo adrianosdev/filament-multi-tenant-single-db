@@ -30,6 +30,7 @@ class CreatePlan extends CreateRecord
         $resonseDataApi = $response->json();
 
         $data = [
+            'preapproval_plan_id' => $resonseDataApi['id'],
             'reason' => $resonseDataApi['reason'],
             'status' => $resonseDataApi['status'],
             'back_url' => $resonseDataApi['back_url'],

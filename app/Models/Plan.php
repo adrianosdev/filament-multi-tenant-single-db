@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Plan extends Model
 {
     protected $fillable = [
+        'preapproval_plan_id',
         'reason',
         'status',
         'back_url',

@@ -15,37 +15,29 @@ class SignaturesTable
         return $table
             ->columns([
                 TextColumn::make('tenant.name')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('plan.name')
-                    ->label('Plano')
+                TextColumn::make('preapproval_plan_id')
+                    ->numeric()
                     ->sortable(),
-                TextColumn::make('price')
-                    ->label('Preço')
-                    ->money('BRL'),
-                TextColumn::make('recurrence')
-                    ->label('Recorrência'),
-                TextColumn::make('recurrence_interval')
-                    ->label('Intervalo de Recorrência')
-                    ->numeric(),
-                TextColumn::make('status'),
-                TextColumn::make('started_at')
-                    ->label('Começa em')
-                    ->date('d/m/Y'),
-                TextColumn::make('end_at')
-                    ->label('Termina em')
-                    ->date('d/m/Y'),
-                TextColumn::make('next_price')
-                    ->label('Próximo Preço')
-                    ->money('BRL'),
-                TextColumn::make('price_change_at')
-                    ->label('Mudança de Preço em')
-                    ->date('d/m/Y'),
+                TextColumn::make('reason')
+                    ->searchable(),
+                TextColumn::make('external_reference')
+                    ->searchable(),
+                TextColumn::make('payer_email')
+                    ->searchable(),
+                TextColumn::make('card_token_id')
+                    ->searchable(),
+                TextColumn::make('back_url')
+                    ->searchable(),
+                TextColumn::make('status')
+                    ->searchable(),
                 TextColumn::make('created_at')
-                    ->dateTime('d/m/Y')
+                    ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
-                    ->dateTime('d/m/Y')
+                    ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

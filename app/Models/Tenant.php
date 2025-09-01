@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Tenant extends Model
 {
     protected $fillable = [
+        'external_customer_id',
+        'external_card_token',
         'name',
         'cpf_cnpj',
         'phone_whatsapp',

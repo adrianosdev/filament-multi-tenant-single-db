@@ -13,7 +13,7 @@ class PlanObserver
      */
     public function created(Plan $plan): void
     {
-        CreatePlanMercadoPagoService::create($plan->toArray());
+       //
     }
 
     /**

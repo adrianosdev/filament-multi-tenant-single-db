@@ -13,16 +13,14 @@ class Signature extends Model
 {
     protected $fillable = [
             'tenant_id',
-            'plan_id',
-            'gateway_subscription_id',
-            'price',
-            'recurrence',
-            'recurrence_interval',
+            'preapproval_plan_id',
+            'reason',
+            'external_reference',
+            'payer_email',
+            'card_token_id',
+            'auto_recurring',
+            'back_url',
             'status',
-            'started_at',
-            'end_at',
-            'next_price',
-            'price_change_at',
     ];
 
     public function tenant(): BelongsTo {
@@ -30,7 +28,7 @@ class Signature extends Model
     }
 
     public function plan(): BelongsTo {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Plan::class, 'preapproval_plan_id', 'preapproval_plan_id');
     }
 
     public function invoices(): HasMany {
