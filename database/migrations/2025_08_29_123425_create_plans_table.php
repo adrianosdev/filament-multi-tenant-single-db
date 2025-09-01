@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->string('gateway_plan_id')->nullable(); // id do plano no gateway
-            $table->string('name');
-            $table->enum('recurrence', ['daily', 'monthly', 'yearly']);
-            $table->integer('recurrence_interval')->default(1); // ex: "a cada 2 meses"
-            $table->integer('trial_period_days')->nullable()->default(0);
-            $table->decimal('current_price', 10, 2);
+            $table->string('reason');
+            $table->string('status')->nullable();
+            $table->string('back_url');
+            $table->json('auto_recurring')->nullable();
+            $table->json('payment_methods_allowed')->nullable();
+            $table->json('api_response')->nullable();
+            $table->json('last_sync')->nullable();
             $table->timestamps();
         });
     }
